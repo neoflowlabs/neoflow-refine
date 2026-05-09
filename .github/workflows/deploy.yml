@@ -27,17 +27,15 @@ jobs:
       - name: Build
         run: bun run build
 
-      - name: Diagnostic - List all files
+      - name: Debug - List Files
         run: |
-          echo "Searching for index.html..."
-          find . -name "index.html"
-          
+          echo "Checking for build output:"
+          ls -R
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # This 'find' logic will help us see if the path is actually:
-          # './.output/public' OR './dist' OR './.vinxi/build/client'
-          path: './.output/public'
+          path: './dist' # Points to the folder Vite actually creates
 
       - name: Deploy to GitHub Pages
         id: deployment
