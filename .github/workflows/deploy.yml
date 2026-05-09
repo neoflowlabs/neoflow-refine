@@ -16,28 +16,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node
-        uses: actions/setup-node@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: 20
+          bun-version: latest
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: bun install
 
       - name: Build
-        run: npm run build
-
-      - name: Debug Output
-        run: |
-          echo "Listing root directory:"
-          ls -F
-          echo "Checking for dist folder:"
-          if [ -d "dist" ]; then ls -R dist; else echo "DIST FOLDER NOT FOUND"; fi
+        run: bun run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './.output/public'
+          # We will try the TanStack output first
+          path: './dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
