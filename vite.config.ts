@@ -2,9 +2,12 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
   vite: {
-    base: '/', // Must be exactly this for a custom domain
+    base: '/', 
   },
+  // Add this block to force Static Generation
   tanstackStart: {
-    server: { entry: "server" },
+    deployment: {
+      target: 'static',
+    },
   },
 });
