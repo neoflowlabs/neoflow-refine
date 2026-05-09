@@ -37,8 +37,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # If 'ls' showed the files are in a different folder, change this path
-          path: './dist'
+          path: './.output/public'
 
       - name: Deploy to GitHub Pages
         id: deployment
