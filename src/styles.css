@@ -151,5 +151,33 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    font-weight: 600;
+  }
+
+  .font-display { font-family: var(--font-display); }
+  .font-display-italic { font-family: var(--font-display); font-style: italic; font-weight: 600; }
+
+  .text-gradient-accent {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .bg-hero {
+    background-image: var(--gradient-hero);
+  }
+
+  .grid-dot {
+    background-image: radial-gradient(oklch(0.97 0.01 250 / 0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
   }
 }
