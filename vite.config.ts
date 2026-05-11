@@ -13,10 +13,5 @@ export default defineConfig({
       target: "static",
       outputPath: "dist",
     },
-    prerender: {
-      enabled: true,
-      crawlLinks: true,
-      autoStaticPathsDiscovery: true,
-    },
   },
 });
