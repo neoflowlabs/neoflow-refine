@@ -30,8 +30,8 @@ jobs:
 
       - name: Create index.html for GitHub Pages
         run: |
-          JS_FILE=$(find dist/client/assets -name "index-*.js" | head -n 1)
           CSS_FILE=$(find dist/client/assets -name "styles-*.css" | head -n 1)
+          JS_FILE=$(find dist/client/assets -name "index-*.js" -printf "%s %p\n" | sort -nr | head -n 1 | cut -d' ' -f2-)
 
           JS_FILE=${JS_FILE#dist/client/}
           CSS_FILE=${CSS_FILE#dist/client/}
@@ -43,19 +43,20 @@ jobs:
               <meta charset="UTF-8" />
               <meta name="viewport" content="width=device-width, initial-scale=1.0" />
               <title>NeoFlow Labs</title>
-              <script type="module" crossorigin src="/$JS_FILE"></script>
-              <link rel="stylesheet" crossorigin href="/$CSS_FILE">
+              <link rel="stylesheet" href="/$CSS_FILE" />
             </head>
             <body>
               <div id="root"></div>
+              <script type="module" src="/$JS_FILE"></script>
             </body>
           </html>
           EOF
 
           touch dist/client/.nojekyll
-          ls -la dist/client
+          cat dist/client/index.html
 
-      - uses: actions/upload-pages-artifact@v3
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist/client
 
@@ -66,4 +67,5 @@ jobs:
       name: github-pages
 
     steps:
-      - uses: actions/deploy-pages@v4
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
