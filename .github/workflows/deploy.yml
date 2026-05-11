@@ -43,17 +43,16 @@ jobs:
               <meta charset="UTF-8" />
               <meta name="viewport" content="width=device-width, initial-scale=1.0" />
               <title>NeoFlow Labs</title>
-              <link rel="stylesheet" href="/$CSS_FILE" />
+              <link rel="stylesheet" href="./$CSS_FILE" />
             </head>
             <body>
               <div id="root"></div>
-              <script type="module" src="/$JS_FILE"></script>
+              <script type="module" src="./$JS_FILE"></script>
             </body>
           </html>
           EOF
 
           touch dist/client/.nojekyll
-          cat dist/client/index.html
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
@@ -67,5 +66,4 @@ jobs:
       name: github-pages
 
     steps:
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v4
