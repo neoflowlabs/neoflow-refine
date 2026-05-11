@@ -2,14 +2,15 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
   vite: {
-    base: '/', 
+    base: "/", // use "/" because you are using a custom domain
     build: {
-      outDir: 'dist', // This ensures the folder is named 'dist'
+      outDir: "dist",
     },
   },
+
   tanstackStart: {
     deployment: {
-      target: 'static', // This generates the index.html you need
+      target: "static",
     },
   },
 });
