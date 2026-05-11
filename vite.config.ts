@@ -7,10 +7,16 @@ export default defineConfig({
       outDir: "dist",
     },
   },
+
   tanstackStart: {
     deployment: {
       target: "static",
       outputPath: "dist",
+    },
+    prerender: {
+      enabled: true,
+      crawlLinks: true,
+      autoStaticPathsDiscovery: true,
     },
   },
 });
