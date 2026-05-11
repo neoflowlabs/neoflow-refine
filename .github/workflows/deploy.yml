@@ -28,14 +28,10 @@ jobs:
       - name: Build project
         run: bun run build
 
-      - name: Debug root files
-        run: ls -la
-
-      - name: Find index.html
-        run: find . -maxdepth 5 -name "index.html"
-
-      - name: List folders
-        run: find . -maxdepth 5 -type d | head -100
+      - name: Check build output
+        run: |
+          ls -la dist
+          test -f dist/index.html
 
       - uses: actions/upload-pages-artifact@v3
         with:
