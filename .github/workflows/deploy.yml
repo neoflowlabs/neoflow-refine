@@ -28,10 +28,32 @@ jobs:
       - name: Build project
         run: bun run build
 
-      - name: Check build output
+      - name: Create index.html for GitHub Pages
         run: |
+          JS_FILE=$(find dist/client/assets -name "index-*.js" | head -n 1)
+          CSS_FILE=$(find dist/client/assets -name "styles-*.css" | head -n 1)
+
+          JS_FILE=${JS_FILE#dist/client/}
+          CSS_FILE=${CSS_FILE#dist/client/}
+
+          cat > dist/client/index.html <<EOF
+          <!doctype html>
+          <html lang="en">
+            <head>
+              <meta charset="UTF-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <title>NeoFlow Labs</title>
+              <script type="module" crossorigin src="/$JS_FILE"></script>
+              <link rel="stylesheet" crossorigin href="/$CSS_FILE">
+            </head>
+            <body>
+              <div id="root"></div>
+            </body>
+          </html>
+          EOF
+
+          touch dist/client/.nojekyll
           ls -la dist/client
-          test -f dist/client/index.html
 
       - uses: actions/upload-pages-artifact@v3
         with:
