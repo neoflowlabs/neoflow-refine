@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
-import { getProjectBySlug, PROJECTS } from "@/lib/projects";
+import { getProjectBySlug, PROJECTS, type Project } from "@/lib/projects";
 
 export const Route = createFileRoute("/projects/$slug")({
   head: ({ params }) => {
@@ -37,7 +37,7 @@ export const Route = createFileRoute("/projects/$slug")({
 });
 
 function ProjectDetail() {
-  const { project } = Route.useLoaderData();
+  const { project } = Route.useLoaderData() as { project: Project };
 
   const isYouTube = project.videoUrl && /youtube\.com|youtu\.be/.test(project.videoUrl);
   const isVimeo = project.videoUrl && /vimeo\.com/.test(project.videoUrl);
