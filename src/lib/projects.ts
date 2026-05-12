@@ -15,6 +15,7 @@ export const PROJECTS: Project[] = [
     title: "WhatsApp Booking Automation",
     desc: "Automated booking flows over WhatsApp — confirmations, reminders, and rescheduling without a human in the loop.",
     chips: ["WhatsApp API", "Automation"],
+    videoUrl: "/videos/whatsapp-booking-automation.mp4",
     longDesc:
       "An end-to-end WhatsApp bot that takes bookings, sends confirmations, handles reminders, and lets customers reschedule — all without staff intervention.",
   },
@@ -24,6 +25,7 @@ export const PROJECTS: Project[] = [
     title: "Clinic Management System",
     desc: "Patient records, appointments, prescriptions, and billing built for small-to-mid clinics.",
     chips: ["EHR-lite", "Scheduling"],
+    videoUrl: "/videos/clinic-management-system.mp4",
     longDesc:
       "A full clinic operations suite — patient records, appointment scheduling, prescriptions, and billing — designed for the day-to-day workflow of a busy practice.",
   },
@@ -33,6 +35,7 @@ export const PROJECTS: Project[] = [
     title: "Automated Booking System with Website",
     desc: "Custom website paired with an end-to-end booking engine and an owner dashboard for full visibility.",
     chips: ["Website", "Booking", "Dashboard"],
+    videoUrl: "/videos/automated-booking-website.mp4",
     longDesc:
       "A branded website with an integrated booking engine and an owner dashboard — bookings, customers, and revenue all in one place.",
   },
