@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
+import { PROJECTS } from "@/lib/projects";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -12,14 +13,6 @@ export const Route = createFileRoute("/projects")({
   }),
   component: ProjectsPage,
 });
-
-const PROJECTS = [
-  { tag: "Automation", title: "WhatsApp Booking Automation", desc: "Automated booking flows over WhatsApp — confirmations, reminders, and rescheduling without a human in the loop.", chips: ["WhatsApp API", "Automation"] },
-  { tag: "Healthcare", title: "Clinic Management System", desc: "Patient records, appointments, prescriptions, and billing built for small-to-mid clinics.", chips: ["EHR-lite", "Scheduling"] },
-  { tag: "Web & Booking", title: "Automated Booking System with Website", desc: "Custom website paired with an end-to-end booking engine and an owner dashboard for full visibility.", chips: ["Website", "Booking", "Dashboard"] },
-  { tag: "Retail & F&B", title: "POS System", desc: "Point-of-sale built for real counters — fast checkout, kitchen display routing, modifiers, and sales analytics.", chips: ["POS", "KDS", "Analytics"] },
-  { tag: "Education", title: "Learning Management Systems", desc: "Course delivery, quizzes, and progress tracking for institutes scaling their teaching online.", chips: ["LMS", "Assessments"] },
-];
 
 function ProjectsPage() {
   return (
@@ -37,7 +30,12 @@ function ProjectsPage() {
       <section className="mx-auto max-w-7xl px-6 py-20">
         <div className="grid md:grid-cols-2 gap-5">
           {PROJECTS.map((p, i) => (
-            <article key={p.title} className="group rounded-2xl border border-border bg-card p-7 hover:border-primary/50 transition-all hover:-translate-y-1">
+            <Link
+              key={p.slug}
+              to="/projects/$slug"
+              params={{ slug: p.slug }}
+              className="group rounded-2xl border border-border bg-card p-7 hover:border-primary/50 transition-all hover:-translate-y-1 block"
+            >
               <div className="flex items-center justify-between mb-5">
                 <span className="text-xs uppercase tracking-widest text-primary">{String(i + 1).padStart(2, "0")} · {p.tag}</span>
                 <ArrowRight size={16} className="text-muted-foreground group-hover:text-primary transition-colors" />
@@ -49,7 +47,7 @@ function ProjectsPage() {
                   <span key={c} className="rounded-full border border-border bg-background px-3 py-1 text-xs text-muted-foreground">{c}</span>
                 ))}
               </div>
-            </article>
+            </Link>
           ))}
         </div>
 
