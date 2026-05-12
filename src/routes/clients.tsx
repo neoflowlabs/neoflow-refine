@@ -16,9 +16,12 @@ export const Route = createFileRoute("/clients")({
 const SECTORS = ["Hospitality", "Healthcare", "Automotive", "Education", "Retail", "Logistics", "Services", "F&B"];
 
 const TESTIMONIALS = [
-  { quote: "NeoFlow rebuilt our ordering flow and our kitchen finally runs in sync. Sales up, mistakes down.", who: "Operations Lead", where: "Pizza Restaurant" },
-  { quote: "They didn't just deliver a system — they understood the problem better than we did.", who: "Owner", where: "Vehicle Service Centre" },
-  { quote: "From sensors to dashboards, the whole IoT setup just works. Reliable and well-documented.", who: "Facility Manager", where: "Manufacturing" },
+  { quote: "The WhatsApp booking automation changed how we run the salon. Clients book themselves, get reminders, and our front desk finally has time to actually serve people.", who: "Owner", where: "Salon" },
+  { quote: "The Clinic Management System keeps every patient record, appointment, and prescription in one place. I spend less time on paperwork and more time with patients.", who: "Doctor", where: "Private Clinic" },
+  { quote: "Our new website with the booking system and owner dashboard gave us a real-time view of every job coming in. Bookings doubled in the first few months.", who: "Manager", where: "Vehicle Service Centre" },
+  { quote: "Integrating online ordering directly into our website cut out the middle-man fees and gave us a proper sales dashboard. It just works.", who: "Owner", where: "Pizza Restaurant" },
+  { quote: "The booking system tied into our website and owner dashboard helps me manage jobs, staff, and packages without chasing spreadsheets all day.", who: "Owner", where: "Vehicle Detailing Centre" },
+  { quote: "The POS is fast, simple, and our team picked it up in a day. Reporting at the end of the night used to take an hour — now it's instant.", who: "Owner", where: "Burger Shop" },
 ];
 
 function ClientsPage() {
@@ -45,7 +48,7 @@ function ClientsPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 pb-20">
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {TESTIMONIALS.map((t) => (
             <figure key={t.quote} className="rounded-2xl border border-border bg-card p-7 flex flex-col">
               <Quote className="text-primary mb-4" size={22} />

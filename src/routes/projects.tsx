@@ -14,12 +14,11 @@ export const Route = createFileRoute("/projects")({
 });
 
 const PROJECTS = [
-  { tag: "Automotive", title: "Vehicle Detailing Booking System", desc: "Online booking, package selection, and admin dashboard for a premium detailing business.", chips: ["Booking", "Web Design"] },
-  { tag: "Food & Beverage", title: "Pizza Restaurant Online Ordering", desc: "Full website and ordering system with kitchen display, payments, and sales analytics.", chips: ["Online Ordering", "POS"] },
-  { tag: "Food & Beverage", title: "POS for a Burger Chain", desc: "Multi-outlet POS with kitchen display routing, modifiers, and a central management console.", chips: ["Multi-outlet POS", "KDS"] },
-  { tag: "Healthcare", title: "Clinic Management System", desc: "Patient records, appointments, and billing built for small-to-mid clinics.", chips: ["EHR-lite", "Scheduling"] },
-  { tag: "Services", title: "Service Centre Platform", desc: "Job intake, technician routing, and customer SMS updates for a vehicle service centre.", chips: ["Operations", "Notifications"] },
-  { tag: "Education", title: "EduTech Learning Portal", desc: "Course delivery, quizzes, and progress tracking for an institute scaling online.", chips: ["LMS", "Assessments"] },
+  { tag: "Automation", title: "WhatsApp Booking Automation", desc: "Automated booking flows over WhatsApp — confirmations, reminders, and rescheduling without a human in the loop.", chips: ["WhatsApp API", "Automation"] },
+  { tag: "Healthcare", title: "Clinic Management System", desc: "Patient records, appointments, prescriptions, and billing built for small-to-mid clinics.", chips: ["EHR-lite", "Scheduling"] },
+  { tag: "Web & Booking", title: "Automated Booking System with Website", desc: "Custom website paired with an end-to-end booking engine and an owner dashboard for full visibility.", chips: ["Website", "Booking", "Dashboard"] },
+  { tag: "Retail & F&B", title: "POS System", desc: "Point-of-sale built for real counters — fast checkout, kitchen display routing, modifiers, and sales analytics.", chips: ["POS", "KDS", "Analytics"] },
+  { tag: "Education", title: "Learning Management Systems", desc: "Course delivery, quizzes, and progress tracking for institutes scaling their teaching online.", chips: ["LMS", "Assessments"] },
 ];
 
 function ProjectsPage() {
