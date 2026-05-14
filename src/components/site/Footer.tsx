@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, MapPin, Linkedin, Github } from "lucide-react";
+import { Mail, MapPin, Instagram, Music2, Phone } from "lucide-react";
 import { Logo } from "./Logo";
 
 export function Footer() {
@@ -13,8 +13,8 @@ export function Footer() {
               Engineering automation, IoT, and EduTech systems precision-built for businesses that demand more.
             </p>
             <div className="flex items-center gap-3 text-muted-foreground">
-              <a href="#" aria-label="LinkedIn" className="hover:text-primary transition-colors"><Linkedin size={18} /></a>
-              <a href="#" aria-label="GitHub" className="hover:text-primary transition-colors"><Github size={18} /></a>
+              <a href="https://www.instagram.com/neoflow_labs/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-primary transition-colors"><Instagram size={18} /></a>
+              <a href="https://www.tiktok.com/@neoflow.labs" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="hover:text-primary transition-colors"><Music2 size={18} /></a>
             </div>
           </div>
           <div>
@@ -31,7 +31,8 @@ export function Footer() {
             <h4 className="text-xs font-medium uppercase tracking-widest text-muted-foreground mb-4 font-sans">Contact</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex items-center gap-2"><MapPin size={14} className="text-primary" /> Sri Lanka</li>
-              <li className="flex items-center gap-2"><Mail size={14} className="text-primary" /> hello@neoflowlabs.com</li>
+              <li className="flex items-center gap-2"><Mail size={14} className="text-primary" /> neoflowlabs@gmail.com</li>
+              <li className="flex items-center gap-2"><Phone size={14} className="text-primary" /> 0779138604</li>
             </ul>
           </div>
         </div>
