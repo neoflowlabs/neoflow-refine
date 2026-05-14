@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { Mail, MapPin, Phone, Send, Instagram, Music2 } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/contact")({
@@ -36,11 +36,26 @@ function ContactPage() {
           </div>
           <div className="rounded-2xl border border-border bg-card p-6">
             <div className="flex items-center gap-3"><Mail className="text-primary" size={18} /><span className="font-medium">Email</span></div>
-            <p className="text-sm text-muted-foreground mt-2">hello@neoflowlabs.com</p>
+            <p className="text-sm text-muted-foreground mt-2">neoflowlabs@gmail.com</p>
           </div>
           <div className="rounded-2xl border border-border bg-card p-6">
             <div className="flex items-center gap-3"><Phone className="text-primary" size={18} /><span className="font-medium">Response time</span></div>
             <p className="text-sm text-muted-foreground mt-2">Within 1 business day, Mon–Fri.</p>
+          </div>
+          <div className="rounded-2xl border border-border bg-card p-6">
+            <div className="flex items-center gap-3"><Phone className="text-primary" size={18} /><span className="font-medium">Phone</span></div>
+            <a href="tel:+94779138604" className="text-sm text-muted-foreground mt-2 block hover:text-primary">0779138604</a>
+          </div>
+          <div className="rounded-2xl border border-border bg-card p-6">
+            <div className="flex items-center gap-3"><Instagram className="text-primary" size={18} /><span className="font-medium">Social</span></div>
+            <div className="mt-3 flex flex-col gap-2 text-sm">
+              <a href="https://www.instagram.com/neoflow_labs/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary">
+                <Instagram size={14} /> @neoflow_labs
+              </a>
+              <a href="https://www.tiktok.com/@neoflow.labs" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary">
+                <Music2 size={14} /> @neoflow.labs
+              </a>
+            </div>
           </div>
         </div>
 
