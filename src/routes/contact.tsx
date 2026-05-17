@@ -60,7 +60,9 @@ function ContactPage() {
         </div>
 
         <form
-          onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+          action="https://formspree.io/f/manpwyng"
+          method="POST"
+          onSubmit={() => { setSent(true); }}
           className="rounded-2xl border border-border bg-card p-8 space-y-5"
         >
           <div className="grid sm:grid-cols-2 gap-5">
@@ -70,7 +72,7 @@ function ContactPage() {
           <Field label="Company" name="company" placeholder="Where do you work?" />
           <div>
             <label className="block text-xs uppercase tracking-widest text-muted-foreground mb-2">Project type</label>
-            <select className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:border-primary">
+            <select name="project-type" className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:border-primary">
               <option>Automation / Internal Tools</option>
               <option>IoT / Connected Hardware</option>
               <option>Data & AI</option>
@@ -81,7 +83,7 @@ function ContactPage() {
           </div>
           <div>
             <label className="block text-xs uppercase tracking-widest text-muted-foreground mb-2">Tell us about your project</label>
-            <textarea rows={5} placeholder="Goals, timeline, current systems..." className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:border-primary resize-none" />
+            <textarea name="message" rows={5} placeholder="Goals, timeline, current systems..." className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:border-primary resize-none" />
           </div>
           <button type="submit" className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-[var(--shadow-glow)]">
             <Send size={16} /> Send message
