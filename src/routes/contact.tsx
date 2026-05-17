@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, MapPin, Phone, Send, Instagram, Music2 } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { toast } from "sonner";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -15,7 +16,36 @@ export const Route = createFileRoute("/contact")({
 });
 
 function ContactPage() {
-  const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSending(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch("https://formspree.io/f/manpwyng", {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        toast.success("We'll get in touch shortly.");
+        form.reset();
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
+    } catch {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setSending(false);
+    }
+  };
+
   return (
     <>
       <section className="bg-hero">
@@ -60,9 +90,8 @@ function ContactPage() {
         </div>
 
         <form
-          action="https://formspree.io/f/manpwyng"
-          method="POST"
-          onSubmit={() => { setSent(true); }}
+          ref={formRef}
+          onSubmit={handleSubmit}
           className="rounded-2xl border border-border bg-card p-8 space-y-5"
         >
           <div className="grid sm:grid-cols-2 gap-5">
@@ -85,10 +114,13 @@ function ContactPage() {
             <label className="block text-xs uppercase tracking-widest text-muted-foreground mb-2">Tell us about your project</label>
             <textarea name="message" rows={5} placeholder="Goals, timeline, current systems..." className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:border-primary resize-none" />
           </div>
-          <button type="submit" className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-[var(--shadow-glow)]">
-            <Send size={16} /> Send message
+          <button
+            type="submit"
+            disabled={sending}
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-[var(--shadow-glow)] disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            <Send size={16} /> {sending ? "Sending..." : "Send message"}
           </button>
-          {sent && <p className="text-sm text-primary">Thanks — we'll be in touch shortly.</p>}
         </form>
       </section>
     </>

@@ -7,6 +7,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import { Toaster } from "sonner";
 
 import appCss from "../styles.css?url";
 import { Header } from "@/components/site/Header";
@@ -121,6 +122,7 @@ function RootComponent() {
         </main>
         <Footer />
       </div>
+      <Toaster />
     </QueryClientProvider>
   );
 }
