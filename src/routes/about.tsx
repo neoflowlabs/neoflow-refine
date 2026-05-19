@@ -4,9 +4,9 @@ import { ArrowRight, Target, Lightbulb, ShieldCheck, Users } from "lucide-react"
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — NeoFlow Labs" },
+      { title: "IoT & Automation Company — About NeoFlow Labs" },
       { name: "description", content: "A Sri Lankan technology lab building automation, IoT, and EduTech systems for businesses around the world." },
-      { property: "og:title", content: "About NeoFlow Labs" },
+      { property: "og:title", content: "IoT & Automation Company — About NeoFlow Labs" },
       { property: "og:description", content: "Engineers, designers, and problem solvers building precision software and hardware." },
     ],
   }),
