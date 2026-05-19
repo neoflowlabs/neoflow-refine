@@ -1,5 +1,4 @@
 import "./lib/error-capture";
-
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
 
@@ -32,17 +31,14 @@ function isCatastrophicSsrErrorBody(body: string, responseStatus: number): boole
   } catch {
     return false;
   }
-
   if (!payload || Array.isArray(payload) || typeof payload !== "object") {
     return false;
   }
-
   const fields = payload as Record<string, unknown>;
   const expectedKeys = new Set(["message", "status", "unhandled"]);
   if (!Object.keys(fields).every((key) => expectedKeys.has(key))) {
     return false;
   }
-
   return (
     fields.unhandled === true &&
     fields.message === "HTTPError" &&
@@ -50,24 +46,70 @@ function isCatastrophicSsrErrorBody(body: string, responseStatus: number): boole
   );
 }
 
-// h3 swallows in-handler throws into a normal 500 Response with body
-// {"unhandled":true,"message":"HTTPError"} — try/catch alone never fires for those.
 async function normalizeCatastrophicSsrResponse(response: Response): Promise<Response> {
   if (response.status < 500) return response;
   const contentType = response.headers.get("content-type") ?? "";
   if (!contentType.includes("application/json")) return response;
-
   const body = await response.clone().text();
   if (!isCatastrophicSsrErrorBody(body, response.status)) {
     return response;
   }
-
   console.error(consumeLastCapturedError() ?? new Error(`h3 swallowed SSR error: ${body}`));
   return brandedErrorResponse();
 }
 
+function sitemapResponse(): Response {
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.neoflowlabs.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.neoflowlabs.com/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.neoflowlabs.com/services</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.neoflowlabs.com/projects</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.neoflowlabs.com/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.neoflowlabs.com/clients</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>`;
+
+  return new Response(sitemap, {
+    status: 200,
+    headers: {
+      "content-type": "application/xml; charset=utf-8",
+      "cache-control": "public, max-age=86400",
+    },
+  });
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    const url = new URL(request.url);
+
+    if (url.pathname === "/sitemap.xml") {
+      return sitemapResponse();
+    }
+
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
