@@ -6,9 +6,9 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — NeoFlow Labs" },
+      { title: "Contact NeoFlow Labs — Get a Free Consultation" },
       { name: "description", content: "Get in touch with NeoFlow Labs. Tell us what you're building and we'll come back with a precise plan." },
-      { property: "og:title", content: "Contact NeoFlow Labs" },
+      { property: "og:title", content: "Contact NeoFlow Labs — Get a Free Consultation" },
       { property: "og:description", content: "Start a conversation about your next automation, IoT, or software project." },
     ],
   }),
