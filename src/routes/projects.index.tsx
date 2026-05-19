@@ -5,9 +5,9 @@ import { PROJECTS } from "@/lib/projects";
 export const Route = createFileRoute("/projects/")({
   head: () => ({
     meta: [
-      { title: "Projects — NeoFlow Labs" },
+      { title: "Automation & IoT Projects — NeoFlow Labs" },
       { name: "description", content: "Selected work from NeoFlow Labs — POS, booking, IoT, and management systems built for real businesses." },
-      { property: "og:title", content: "Projects — NeoFlow Labs" },
+      { property: "og:title", content: "Automation & IoT Projects — NeoFlow Labs" },
       { property: "og:description", content: "Custom-built systems for restaurants, clinics, service centres, and beyond." },
     ],
   }),
@@ -26,7 +26,6 @@ function ProjectsPage() {
           </p>
         </div>
       </section>
-
       <section className="mx-auto max-w-7xl px-6 py-20">
         <div className="grid md:grid-cols-2 gap-5">
           {PROJECTS.map((p, i) => (
@@ -50,7 +49,6 @@ function ProjectsPage() {
             </Link>
           ))}
         </div>
-
         <div className="mt-16 text-center">
           <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-[var(--shadow-glow)]">
             Start your project <ArrowRight size={16} />
