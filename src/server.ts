@@ -102,12 +102,31 @@ function sitemapResponse(): Response {
   });
 }
 
+function robotsResponse(): Response {
+  const robots = `User-agent: *
+Allow: /
+
+Sitemap: https://www.neoflowlabs.com/sitemap.xml`;
+
+  return new Response(robots, {
+    status: 200,
+    headers: {
+      "content-type": "text/plain; charset=utf-8",
+      "cache-control": "public, max-age=86400",
+    },
+  });
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     const url = new URL(request.url);
 
     if (url.pathname === "/sitemap.xml") {
       return sitemapResponse();
+    }
+
+    if (url.pathname === "/robots.txt") {
+      return robotsResponse();
     }
 
     try {
