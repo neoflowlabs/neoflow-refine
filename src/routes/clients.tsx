@@ -4,9 +4,9 @@ import { ArrowRight, Quote } from "lucide-react";
 export const Route = createFileRoute("/clients")({
   head: () => ({
     meta: [
-      { title: "Clients — NeoFlow Labs" },
+      { title: "Client Success Stories — NeoFlow Labs" },
       { name: "description", content: "Trusted by businesses across Sri Lanka — restaurants, clinics, service centres, and more." },
-      { property: "og:title", content: "Clients — NeoFlow Labs" },
+      { property: "og:title", content: "Client Success Stories — NeoFlow Labs" },
       { property: "og:description", content: "Real partnerships across hospitality, healthcare, education, and services." },
     ],
   }),
