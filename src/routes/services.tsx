@@ -4,9 +4,9 @@ import { ArrowRight, Cpu, Globe2, BarChart3, GraduationCap, Boxes, Sparkles, Che
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services — NeoFlow Labs" },
+      { title: "IoT, Automation & EduTech Services — NeoFlow Labs" },
       { name: "description", content: "Automation, IoT, Data & AI, EduTech, and custom software — engineered end-to-end for your business." },
-      { property: "og:title", content: "Services — NeoFlow Labs" },
+      { property: "og:title", content: "IoT, Automation & EduTech Services — NeoFlow Labs" },
       { property: "og:description", content: "From POS to predictive dashboards, we build precision systems for how you actually operate." },
     ],
   }),
