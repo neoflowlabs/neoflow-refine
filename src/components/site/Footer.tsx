@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, MapPin, Instagram, Music2, Phone } from "lucide-react";
 import { Logo } from "./Logo";
-
 export function Footer() {
   return (
     <footer className="border-t border-border/50 bg-background mt-24">
@@ -38,7 +37,10 @@ export function Footer() {
         </div>
         <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-4 border-t border-border/40 pt-6 text-xs text-muted-foreground">
           <p>© {new Date().getFullYear()} NeoFlow Labs. All rights reserved.</p>
-          <p>Built in Sri Lanka · Engineering for the world.</p>
+          <div className="flex items-center gap-4">
+            <Link to="/privacy-policy" className="hover:text-primary">Privacy Policy</Link>
+            <p>Built in Sri Lanka · Engineering for the world.</p>
+          </div>
         </div>
       </div>
     </footer>
