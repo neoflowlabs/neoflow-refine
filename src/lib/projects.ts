@@ -20,6 +20,15 @@ export const PROJECTS: Project[] = [
       "An end-to-end WhatsApp bot that takes bookings, sends confirmations, handles reminders, and lets customers reschedule — all without staff intervention.",
   },
   {
+    slug: "multichannel-lead-inquiry-system",
+    tag: "Education",
+    title: "Multi-Channel Lead Inquiry System",
+    desc: "Unified WhatsApp, Messenger, and Instagram inquiry pipeline for an educational institution — automated responses, lead routing, and a director's dashboard.",
+    chips: ["WhatsApp API", "Messenger API", "Instagram API", "Lead Automation"],
+    longDesc:
+      "A multi-channel inquiry automation platform connecting WhatsApp, Facebook Messenger, Instagram, and email into a single pipeline. Inbound student inquiries are automatically responded to and routed to the right admissions agent, with fair auto-assignment, follow-up scheduling, and a real-time director's dashboard for tracking lead volume and conversion.",
+  },
+  {
     slug: "clinic-management-system",
     tag: "Healthcare",
     title: "Clinic Management System",
