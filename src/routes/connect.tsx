@@ -108,6 +108,14 @@ function ConnectPage() {
       await new Promise((r) => setTimeout(r, 250));
     }
 
+    if (!sessionInfo.current.waba_id) {
+      setStatus("idle");
+      setMessage(
+        "Signup wasn't completed — no WhatsApp account was connected. Please click Connect again and finish all steps, including adding your phone number."
+      );
+      return;
+    }
+
     try {
       const res = await fetch(`${SUPABASE_URL}/functions/v1/whatsapp-onboard`, {
         method: "POST",
