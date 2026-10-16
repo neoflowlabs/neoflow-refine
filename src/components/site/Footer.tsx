@@ -39,10 +39,11 @@ export function Footer() {
           <p>© {new Date().getFullYear()} NeoFlow Labs. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <Link to="/privacy-policy" className="hover:text-primary">Privacy Policy</Link>
+            <Link to="/connect" className="hover:text-primary">Connect WhatsApp</Link>
             <p>Built in Sri Lanka · Engineering for the world.</p>
           </div>
         </div>
       </div>
-    </footer>  
+    </footer>
   );
 }
