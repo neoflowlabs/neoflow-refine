@@ -14,8 +14,11 @@ const META_APP_ID = "995119653564886";
 const ES_CONFIG_ID = "1474855131208336"; // WhatsApp Embedded Signup configuration (System-user token)
 const GRAPH_VERSION = "v23.0"; // match the Graph API version shown in your App Dashboard
 
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
-const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
+// Public values (safe to include in the website). Replace the two placeholders below.
+const SUPABASE_URL =
+  (import.meta.env.VITE_SUPABASE_URL as string) || "https://njsjezrmwklrduwbxrkd.supabase.co";
+const SUPABASE_ANON_KEY =
+  (import.meta.env.VITE_SUPABASE_ANON_KEY as string) || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5qc2plenJtd2tscmR1d2J4cmtkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk2MzYxODMsImV4cCI6MjA5NTIxMjE4M30.IevcMM2uHQtuDMbxaCY9t29zAQzSNa7O0BWtows4wxI";
 
 declare global {
   interface Window {
@@ -122,8 +125,16 @@ function ConnectPage() {
           coexistence,
         }),
       });
-      const out = await res.json();
-      if (!res.ok) throw new Error(out?.error || "Setup failed");
+      const text = await res.text();
+      let out: any = {};
+      try {
+        out = JSON.parse(text);
+      } catch {
+        throw new Error(
+          `Server returned an unexpected response (HTTP ${res.status}). Check the Supabase URL and function name.`
+        );
+      }
+      if (!res.ok) throw new Error(out?.error || `Setup failed (HTTP ${res.status})`);
       setStatus("done");
       setMessage("Your WhatsApp Business account is connected to NeoFlow Labs. Our team will be in touch to finish your automation setup.");
     } catch (e: any) {
